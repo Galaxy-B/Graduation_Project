@@ -1,6 +1,17 @@
 ## Weekly Report
 
-更新时间：2025.07.06
+更新时间：2025.07.28
+
+## 2025.07.27
+
+近期工作：
+
++ 使用 **LibCacheSim** 给出的参考数据集，进行 **PNAC** 与对比算法之间的性能测试实验；并基于实验结果优化算法，收集实验数据至：[data/](https://github.com/Galaxy-B/Graduation_Project/tree/main/data)
+
+  + 对比算法：PNAC / LRU / FIFO / ARC / TwoQ / SIEVE / LFU
+  
+  + 数据集：Oracle Trace / Wiki CDN / Meta CDN
+
 
 ## 2025.07.06
 
