@@ -1,6 +1,14 @@
 ## Weekly Report
 
-更新时间：2025.07.28
+更新时间：2025.08.10
+
+## 2025.08.10
+
+近期工作：
+
++ 完成 Tencent Photo 数据集的切分，并使用更多不同数据集进行对比算法之间的性能测试实验
+
+  + 现有数据集：Oracle Trace / Wiki CDN / Meta CDN / Tencent Photo
 
 ## 2025.07.27
 
