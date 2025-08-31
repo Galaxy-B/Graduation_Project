@@ -1,6 +1,16 @@
 ## Weekly Report
 
-更新时间：2025.08.10
+更新时间：2025.08.31
+
+## 2025.08.31
+
+近期工作：
+
++ 在选中数据集上进行更多实验，持续优化 **PNAC** 算法的性能
+
++ 编写脚本，使用现有实验数据绘制对比算法效果图：[images/result.png](images/result.png)
+
+![](images/result.png)
 
 ## 2025.08.10
 
@@ -14,7 +24,7 @@
 
 近期工作：
 
-+ 使用 **LibCacheSim** 给出的参考数据集，进行 **PNAC** 与对比算法之间的性能测试实验；并基于实验结果优化算法，收集实验数据至：[data/](https://github.com/Galaxy-B/Graduation_Project/tree/main/data)
++ 使用 **LibCacheSim** 给出的参考数据集，进行 **PNAC** 与对比算法之间的性能测试实验；并基于实验结果优化算法，收集实验数据至：[data/](data/)
 
   + 对比算法：PNAC / LRU / FIFO / ARC / TwoQ / SIEVE / LFU
   
@@ -43,5 +53,5 @@
 
 本周工作：
 
-+ 完成 **Periodic Sketch** 论文 Intro 与 Related Work 部分的精读，并整理论文笔记至：[Thesis Notes](https://github.com/Galaxy-B/Graduation_Project/blob/main/docs/ThesisNotes.md)
++ 完成 **Periodic Sketch** 论文 Intro 与 Related Work 部分的精读，并整理论文笔记至：[Thesis Notes](docs/ThesisNotes.md)
   
