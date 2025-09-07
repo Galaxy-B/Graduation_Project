@@ -12,7 +12,15 @@
 
 + 按照要求，重新绘制各缓存算法的对比效果图
 
++ 整理实验环境配置 & 算法配置文档：[docs/Environment.md](docs/Environment.md)
+
 绘制结果：
+
++ 数据集：Wiki CDN / Meta CDN / Tencent / CAIDA / MAWI
+
++ 原图链接：[images/mrtp_final.png](images/mrtp_final.png)
+
+![](images/mrtp_final.png)
 
 + 数据集：Wiki CDN / Meta CDN / Tencent / CAIDA 
 
