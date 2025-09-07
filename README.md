@@ -1,6 +1,30 @@
 ## Weekly Report
 
-更新时间：2025.08.31
+更新时间：2025.09.07
+
+## 2025.09.07
+
+近期工作：
+
++ 额外引入 S3-FIFO 作为对比算法，在候选数据集上进行实验并收集结果 
+
++ 添加 CAIDA / MAWI 作为候选数据集，并跑出所有对比算法的性能表现
+
++ 按照要求，重新绘制各缓存算法的对比效果图
+
+绘制结果：
+
++ 数据集：Wiki CDN / Meta CDN / Tencent / CAIDA 
+
++ 原图链接：[images/mrtp_meta.png](images/mrtp_meta.png)
+
+![](images/mrtp_meta.png)
+
++ 数据集：Wiki CDN / Tencent / CAIDA / MAWI 
+
++ 原图链接：[images/mrtp_mawi.png](images/mrtp_mawi.png)
+
+![](images/mrtp_mawi.png)
 
 ## 2025.08.31
 
@@ -8,9 +32,9 @@
 
 + 在选中数据集上进行更多实验，持续优化 **PNAC** 算法的性能
 
-+ 编写脚本，使用现有实验数据绘制对比算法效果图：[images/result.png](images/result.png)
++ 编写脚本，使用现有实验数据绘制对比算法效果图：[images/mrtp_trial.png](images/mrtp_trial.png)
 
-![](images/result.png)
+![](images/mrtp_trial.png)
 
 ## 2025.08.10
 
