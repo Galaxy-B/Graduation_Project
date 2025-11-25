@@ -2,6 +2,8 @@
 
 P4 官方教程代码仓库：[https://github.com/p4lang/tutorials](https://github.com/p4lang/tutorials/tree/master)
 
+P4 Language Cheat Sheet：[https://drive.google.com/file](https://drive.google.com/file/d/1Z8woKyElFAOP6bMd8tRa_Q4SA1cd_Uva/view)
+
 ## 1. 基础语法
 
 + P4 语言的四大工具：计数器、计量器、寄存器、主动上报机制
