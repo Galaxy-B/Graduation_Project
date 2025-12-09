@@ -1,6 +1,16 @@
 ## Weekly Report
 
-更新时间：2025.11.23
+更新时间：2025.12.10
+
+## 2025.12.10
+
+近期工作：
+
++ 学习 P4 官方指导教程，并整理笔记至：[docs/P4Lang.md](docs/P4Lang.md)
+
++ 确定后续用于部署代码的网络拓扑，拓扑原图链接：[images/network_topo.png](images/network_topo.png)
+
+![](images/network_topo.png)
 
 ## 2025.11.23
 
