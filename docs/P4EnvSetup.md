@@ -135,3 +135,140 @@ cd p4runtime-shell
 patch -p1 < ../p4-guide/bin/patches/p4runtime-shell-2023-changes.patch
 pip3 install .
 ```
+
+上述所有步骤执行完毕后，P4 代码仿真运行所需的环境便搭建完成，后续章节将对如何复现论文中设计的各项实验进行介绍。
+
+# 运行 P4 语言相关实验
+
+所有 P4 语言相关实验均基于以下网络拓扑开展。
+
+![](../images/network_topo.png)
+
+借助 Mininet 工具，我们可以通过 JSON 文件定义网络架构，并在单台主机上完成模拟运行。该网络拓扑对应的 JSON 配置 [network_topo.json](../config/network_topo.json) 如下：
+
+<details>
+<summary>点击展开配置</summary>
+
+```json
+{
+    "hosts": {
+        "h1": {
+            "ip": "10.0.1.1/24",
+            "mac": "08:00:00:00:01:11",
+            "commands": [
+                "route add default gw 10.0.1.10 dev eth0",
+                "arp -i eth0 -s 10.0.1.10 08:00:00:00:01:00"
+            ]
+        },
+        "h2": {
+            "ip": "10.0.1.2/24",
+            "mac": "08:00:00:00:01:22",
+            "commands": [
+                "route add default gw 10.0.1.10 dev eth0",
+                "arp -i eth0 -s 10.0.1.10 08:00:00:00:01:00"
+            ]
+        },
+        "h3": {
+            "ip": "10.0.2.1/24",
+            "mac": "08:00:00:00:02:11",
+            "commands": [
+                "route add default gw 10.0.2.20 dev eth0",
+                "arp -i eth0 -s 10.0.2.20 08:00:00:00:02:00"
+            ]
+        },
+        "h4": {
+            "ip": "10.0.2.2/24",
+            "mac": "08:00:00:00:02:22",
+            "commands": [
+                "route add default gw 10.0.2.20 dev eth0",
+                "arp -i eth0 -s 10.0.2.20 08:00:00:00:02:00"
+            ]
+        },
+        "h5": {
+            "ip": "10.0.3.1/24",
+            "mac": "08:00:00:00:03:11",
+            "commands": [
+                "route add default gw 10.0.3.30 dev eth0",
+                "arp -i eth0 -s 10.0.3.30 08:00:00:00:03:00"
+            ]
+        },
+        "h6": {
+            "ip": "10.0.3.2/24",
+            "mac": "08:00:00:00:03:22",
+            "commands": [
+                "route add default gw 10.0.3.30 dev eth0",
+                "arp -i eth0 -s 10.0.3.30 08:00:00:00:03:00"
+            ]
+        }
+    },
+    "switches": {
+        "s1": {
+            "runtime_json": "network_topo/s1_runtime.json"
+        },
+        "s2": {
+            "runtime_json": "network_topo/s2_runtime.json"
+        },
+        "s3": {
+            "runtime_json": "network_topo/s3_runtime.json"
+        }
+    },
+    "links": [
+        [
+            "h1",
+            "s1-p1"
+        ],
+        [
+            "h2",
+            "s1-p2"
+        ],
+        [
+            "s1-p3",
+            "s3-p1"
+        ],
+        [
+            "s1-p4",
+            "s2-p2"
+        ],
+        [
+            "h3",
+            "s2-p1"
+        ],
+        [
+            "h4",
+            "s2-p4"
+        ],
+        [
+            "s2-p3",
+            "s3-p4"
+        ],
+        [
+            "h5",
+            "s3-p2"
+        ],
+        [
+            "h6",
+            "s3-p3"
+        ]
+    ]
+}
+```
+ 
+</details><br>
+
+获取到完整的网络拓扑配置文件、P4 源代码文件、实验运行脚本、网络轨迹数据后，可执行以下命令来编译部署 P4 程序，并在本地完成各项仿真实验的复现。
+
+```sh
+source P4Simulation/bin/activate
+mkdir -p build logs pcaps
+
+for source_code in exp1/*.p4; do
+  base="${source_code%.p4}"                     
+  output_json="build/${base}.json"
+  output_info="build/${base}.p4.p4info.txtpb"
+  p4c-bm2-ss --p4v 16 --p4runtime-files "$output_info" -o "$output_json" "$source_code"
+  echo "Compiled: $source_code -> $output_json"
+done
+
+python3 start_mininet.py -t network_topo.json -b simple_switch_grpc -j exp1/core.p4
+python3 run_exp1.py
+```
